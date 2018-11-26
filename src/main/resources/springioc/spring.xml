@@ -3,11 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <bean id="xumeng" class="com.learn.springioc.beans.Xumeng">   
+	
+	<!-- name可用,;空格 分隔多个name -->
+    <bean id="xumeng" name="xm,meng" class="com.learn.springioc.beans.Xumeng">   
         <!-- collaborators and configuration for this bean go here -->
     </bean>
-
+    <!-- 别名 -->
+    <alias name="xm" alias="mengmeng"/>
+    <!-- 静态工厂方法创建实例 -->
+    <bean id = "xm1" class="com.learn.springioc.bean.StaticFactoryMethod" factory-method="getInstance"/>
+    <!-- 工厂方法创建实例 -->
+    <bean id = "factorymethod" class="com.learn.springioc.bean.FactoryMethodClass"/>
+    <bean name = "meng1" factory-bean="factorymethod" factory-method="createMeng"/>
     <!-- <bean id="..." class="...">
         collaborators and configuration for this bean go here
     </bean> -->
