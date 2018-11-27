@@ -15,6 +15,20 @@
     <!-- 工厂方法创建实例 -->
     <bean id = "factorymethod" class="com.learn.springioc.bean.FactoryMethodClass"/>
     <bean name = "meng1" factory-bean="factorymethod" factory-method="createMeng"/>
+    
+    <!-- 构造器注入 -->
+    <bean id="cdi" class="com.learn.springioc.bean.ConstructorDI">
+    	<constructor-arg name="x" value="meng"/>
+    	<constructor-arg name="y" value="1"/>
+    	<!-- index,type(非简单类型，无继承关系可直接ref=""自动区分) -->
+    </bean>
+    
+    <!-- setter方法注入 -->
+    <bean id="sdi" class="com.learn.springioc.bean.SetterDI">
+    	<property name="xm" ref="xumeng"/>
+    </bean>
+    <!-- 懒初始化，默认配置单例启动初始化 -->
+    <bean id="xumeng_lazy" class="com.learn.springioc.beans.Xumeng" lazy-init="true"/>
     <!-- <bean id="..." class="...">
         collaborators and configuration for this bean go here
     </bean> -->
